@@ -5,6 +5,10 @@ const handlebars = require("express-handlebars");
 const port = 5000;
 const routes = require("./routes");
 const morgan = require("morgan");
+const db = require("./config/db");
+
+// Connect database
+db.connect();
 
 //template engine
 app.engine(
