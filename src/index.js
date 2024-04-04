@@ -5,6 +5,7 @@ const handlebars = require("express-handlebars");
 const port = 5000;
 const routes = require("./routes");
 const morgan = require("morgan");
+const methodOverride = require("method-override");
 const db = require("./config/db");
 
 // Connect database
@@ -15,10 +16,15 @@ app.engine(
   "hbs",
   handlebars.engine({
     extname: ".hbs",
+    helpers: {
+      sum: (a, b) => a + b,
+    }
   })
 );
 app.set("view engine", "hbs");
-app.set("views", path.join(__dirname, "resources/views"));
+app.set("views", path.join(__dirname, "resources", "views"));
+
+app.use(methodOverride("_method"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -34,5 +40,5 @@ routes(app);
 // app.use(morgan("combined"));
 
 app.listen(port, () => {
-  console.log(`Example app listening on port http://localhost:${port}`);
+  console.log(`App listening on port http://localhost:${port}`);
 });
