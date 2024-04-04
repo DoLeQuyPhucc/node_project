@@ -44,7 +44,28 @@ class CoursesController {
   updateCourse(req, res, next) {
     req.body.image = `https://img.youtube.com/vi/${req.body.videoID}/sddefault.jpg`;
     Course.updateOne({ _id: req.params.id }, req.body)
-      .then(() => res.redirect(`/me/stored/courses`))
+      .then(() => res.redirect("/me/stored/courses"))
+      .catch(next);
+  }
+
+  // [DELETE] /:id
+  deleteCourse(req, res, next) {
+    Course.delete({ _id: req.params.id })
+      .then(() => res.redirect("back"))
+      .catch(next);
+  }
+
+  // [DELETE] /:id/force
+  forceDeleteCourse(req, res, next) {
+    Course.deleteOne({ _id: req.params.id })
+      .then(() => res.redirect("back"))
+      .catch(next);
+  }
+
+  // [PATCH] /:id/restore
+  restoreCourse(req, res, next) {
+    Course.restore({ _id: req.params.id })
+      .then(() => res.redirect("back"))
       .catch(next);
   }
 }
