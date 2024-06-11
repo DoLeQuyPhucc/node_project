@@ -2,8 +2,10 @@
   "name": "node-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "watch": "sass --watch --no-source-map src/resources/scss:src/public/css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +23,16 @@
   },
   "homepage": "https://github.com/ak4ishuich1/node_project#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "bootstrap-icons": "^1.11.3",
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.2.4",
+    "mongoose-delete": "^1.0.2",
+    "mongoose-slug-updater": "^3.3.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "sass": "^1.72.0"
   }
 }

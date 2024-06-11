@@ -1,0 +1,16 @@
+h1 {
+  color: red;
+}
+
+h2 {
+  color: green;
+}
+
+.user-avatar {
+  margin-right: 20px;
+}
+
+.select-checkbox-all-options {
+  width: 220px;
+  margin: 0 16px;
+}
